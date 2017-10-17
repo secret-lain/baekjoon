@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 import solutions.interfaces.SolutionAbs;
 
+/*
+ * https://www.acmicpc.net/problem/1002
+ * ≈Õ∑ø
+ * 
+ * */
 public class Solution1002 extends SolutionAbs {
 
 	@Override
