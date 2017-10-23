@@ -1,5 +1,6 @@
 package baekjoon;
 
+import java.util.HashMap;
 import java.util.Scanner;
 import solutions.interfaces.Solution;
 
@@ -10,6 +11,26 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		// 여기다 입력해서 제출!
+		 Scanner in = new Scanner(System.in);
+		
+		int count = Integer.valueOf(in.nextLine());
+		int result = 0;
+		for(int i = 0 ; i < count ; i++) {
+			char[] target = in.nextLine().toCharArray();
+			HashMap<Character, Integer> map = new HashMap<>();
+			int index = 0;
+			
+			while(index < target.length) {
+				if(!map.containsKey(target[index])) {
+					int fixedIndex = index++;
+					while(index < target.length && target[fixedIndex] == target[index]) index++;
+				} else break;
+			}
+			
+			if(index >= target.length) result++;
+		}
+		
+		System.out.println(result);
     }
 }
 
@@ -25,7 +46,7 @@ public class Main {
 			//테스트시 이 부분을 고정값으로 변경
 			System.out.print("문제 번호를 입력하세요 : ");
 //			String className = in.nextLine();
-			String className = "1002";
+			String className = "1316";
 					
 			
 			//클래스를 리플렉션을 통해 생성한다. 잘못된 접근의 경우 에러 발생.
