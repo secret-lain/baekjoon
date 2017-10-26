@@ -1,9 +1,11 @@
 package baekjoon;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -17,7 +19,31 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-	
+		Scanner in = new Scanner(System.in);
+
+		int n = in.nextInt();
+		List<List<String>> list = new ArrayList<>();
+		HashSet<String> checker = new HashSet<>();
+		
+		for(int i = 0 ; i < 50 ; i++) {
+			list.add(new ArrayList<>());
+		}
+		
+		for(int i = 0 ; i < n ; i++) {
+			String item = in.nextLine();
+			if(checker.contains(item)) continue;
+			else {
+				checker.add(item);
+				list.get(item.length()).add(item);
+			}
+		}
+		
+		for(List<String> arr : list) {
+			Collections.sort(arr, Collator.getInstance());
+			for(String item : arr) {
+				System.out.println(item);
+			}
+		}
     }
 }
 
@@ -33,7 +59,7 @@ public class Main {
 			//테스트시 이 부분을 고정값으로 변경
 			System.out.print("문제 번호를 입력하세요 : ");
 //			String className = in.nextLine();
-			String className = "2178";
+			String className = "1181";
 					
 			
 			//클래스를 리플렉션을 통해 생성한다. 잘못된 접근의 경우 에러 발생.
