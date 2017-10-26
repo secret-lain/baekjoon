@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 import solutions.interfaces.Solution;
 
+/**
+ * https://www.acmicpc.net/problem/1316
+ * 그룹 단어 체커
+ * @author lain
+ *
+ */
 public class Solution1316 implements Solution{
 	@Override
 	public void solve() {
