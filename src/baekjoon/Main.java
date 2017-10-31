@@ -20,32 +20,29 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		int[][] arr = new int[15][15];
-		for(int i = 0 ; i < 15 ; i++) {
-			arr[0][i] = i+1;
-			arr[i][0] = 1;
-		}
+		int arr[] = new int[10];
+		int max = 0;
 		
-		int testcase = in.nextInt();
-		int[][] cases = new int[testcase][2];
-		int maxK = -1;
-		int maxN = -1;
-		for(int i = 0 ; i < testcase ; i++) {
-			cases[i][0] = in.nextInt();
-			cases[i][1] = in.nextInt();
-			if(cases[i][0] > maxK) maxK = cases[i][0];
-			if(cases[i][1] > maxN) maxN = cases[i][1];
-		}
-		
-		for(int i = 1 ; i <= maxK ; i++) {
-			for(int j = 1 ; j <= maxN ; j++) {
-				arr[i][j] = arr[i-1][j] + arr[i][j-1];
+		String digit = in.nextLine();
+		for(int i = 0 ; i < digit.length() ; i++) {
+			int curr = digit.charAt(i) - 48;
+			
+			if(curr == 6 || curr == 9) {
+				if(arr[6] < arr[9]) {
+					arr[6]++;
+					if(max < arr[6]) max = arr[6];
+				}
+				else {
+					arr[9]++;
+					if(max < arr[9]) max = arr[9];
+				}				
+			} else {
+				arr[curr]++;
+				if(max < arr[curr]) max++;
 			}
 		}
 		
-		for(int i = 0 ; i < testcase ; i++) {
-			System.out.println(arr[cases[i][0]][cases[i][1] - 1]);
-		}
+		System.out.println(max);
     }
 }
 
@@ -61,7 +58,7 @@ public class Main {
 			// 테스트시 이 부분을 고정값으로 변경
 			System.out.print("문제 번호를 입력하세요 : ");
 			// String className = in.nextLine();
-			String className = "2775";
+			String className = "1475";
 
 			// 클래스를 리플렉션을 통해 생성한다. 잘못된 접근의 경우 에러 발생.
 			Class solutionClass = Class.forName(classNamePrefix + className);
